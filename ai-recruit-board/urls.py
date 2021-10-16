@@ -1,10 +1,9 @@
-from django.urls import path, include
+from django.urls import path
 
 from django.contrib import admin
+from apps.core.views import frontpage, signup
 
 admin.autodiscover()
-
-import MainAPP.views
 
 # To add a new path, first import the app:
 # import blog
@@ -15,8 +14,7 @@ import MainAPP.views
 # Learn more here: https://docs.djangoproject.com/en/2.1/topics/http/urls/
 
 urlpatterns = [
-    path("", MainAPP.views.index, name="index"),
-    path("portfolio/", MainAPP.views.portfolio, name="portfolio"),
-    path("db/", MainAPP.views.db, name="db"),
+    path("", frontpage, name="frontpage"),
+    path("signup/", signup, name="signup"),
     path("admin/", admin.site.urls),
 ]
