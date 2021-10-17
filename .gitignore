@@ -6,5 +6,4 @@ db.sqlite3
 getting-started/*
 .github
 .idea
-Procfile.windows
-.gitattributes
+.gitignore
