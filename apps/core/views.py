@@ -3,10 +3,13 @@ from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
 
+from apps.job.models import Job
+
 # Create your views here.
 
 def frontpage(request):
-    return render(request, 'core/home.html')
+    jobs = Job.objects.all()[0:3]
+    return render(request, 'core/home.html', {'jobs':jobs})
 
 def signup(request):
     if request.method =='POST':
