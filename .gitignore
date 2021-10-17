@@ -4,6 +4,6 @@ staticfiles
 .env
 db.sqlite3
 getting-started/*
-.github
+
 .idea
 .gitignore
