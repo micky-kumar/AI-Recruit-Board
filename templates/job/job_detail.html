@@ -7,4 +7,9 @@
 
     <p> {{ job.long_description }}</p>
 
+    {% if job.status == 'active' %}
+        <a href="{% url 'apply_for_job' job.id %}" class="button is-success">Apply for job</a>
+    {% else %}
+        <p>This job is not available anymore!</p>
+    {% endif %}
 {% endblock %}
