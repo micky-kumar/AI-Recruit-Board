@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from apps.job.models import Application
 # Create your models here.
 
 class Userprofile(models.Model):
@@ -12,3 +13,17 @@ class Userprofile(models.Model):
 
 
 User.userprofile = property(lambda u:Userprofile.objects.get_or_create(user=u)[0])
+
+class ConversationMessage(models.Model):
+    application = models.ForeignKey(Application, related_name='conversationmessages', on_delete=models.CASCADE)
+    content = models.TextField()
+
+    created_by = models.ForeignKey(User, related_name='conversationmessages', on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+
+        return self.created_at
+
+    class Meta:
+        ordering = ['created_at']

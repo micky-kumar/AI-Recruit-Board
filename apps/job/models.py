@@ -41,6 +41,7 @@ class Job(models.Model):
     status = models.CharField(max_length=20, choices=CHOICES_STATUS, default=ACTIVE)
 
     def __str__(self):
+
         return self.title
 
 class Application(models.Model):
@@ -50,3 +51,4 @@ class Application(models.Model):
 
     created_by = models.ForeignKey(User, related_name='applications', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
+
