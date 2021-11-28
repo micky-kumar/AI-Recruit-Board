@@ -45,6 +45,9 @@ INSTALLED_APPS = [
     "apps.core",
     "apps.job",
     "apps.userprofile",
+    'apps.notification',
+    'multiselectfield',
+
 ]
 
 MIDDLEWARE = [
@@ -70,6 +73,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                'apps.notification.context_processors.notifications'
             ]
         },
     }

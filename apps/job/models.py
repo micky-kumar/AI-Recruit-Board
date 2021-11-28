@@ -33,7 +33,7 @@ class Job(models.Model):
     company_zipcode = models.CharField(max_length=255, blank=True, null=True)
     company_place = models.CharField(max_length=255, blank=True, null=True)
     company_country = models.CharField(max_length=255, blank=True, null=True)
-    company_size = models.CharField(max_length=20, choices=CHOICES_SIZE, default=SIZE_1_9)
+    company_size = models.CharField(max_length=20, choices=CHOICES_SIZE, default=SIZE_1_9, blank=True, null=True)
 
     created_by = models.ForeignKey(User, related_name='jobs', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)

@@ -1,11 +1,20 @@
 from django.db import models
 from django.contrib.auth.models import User
 from apps.job.models import Application
+from multiselectfield import MultiSelectField
+
 # Create your models here.
 
 class Userprofile(models.Model):
+    skills = (
+        ('Python','Python'),
+        ('AWS', 'AWS'),
+        ('Azure', 'Azure'),
+    )
+
     user = models.OneToOneField(User, related_name='userprofile', on_delete=models.CASCADE)
     is_employer = models.BooleanField(default=False)
+    skill_set = MultiSelectField(choices = skills)
 
     def __str__(self):
         return str(self.user)
