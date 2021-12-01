@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
+from multiselectfield import MultiSelectField
 
 class Job(models.Model):
     SIZE_1_9 = 'size_1-9'
@@ -17,7 +18,11 @@ class Job(models.Model):
     ACTIVE = 'active'
     EMPLOYED = 'employed'
     ARCHIVED = 'archived'
-
+    skills = (
+        ('Python','Python'),
+        ('AWS', 'AWS'),
+        ('Azure', 'Azure'),
+    )
     CHOICES_STATUS = (
         (ACTIVE, 'Active'),
         (EMPLOYED, 'Employed'),
@@ -27,13 +32,14 @@ class Job(models.Model):
     title = models.CharField(max_length=255)
     short_description = models.TextField()
     long_description = models.TextField(blank=True, null=True)
-
+    skill_set = MultiSelectField(choices=skills, default='none')
     company_name = models.CharField(max_length=255,blank=True, null=True)
     company_address = models.CharField(max_length=255, blank=True, null=True)
     company_zipcode = models.CharField(max_length=255, blank=True, null=True)
     company_place = models.CharField(max_length=255, blank=True, null=True)
     company_country = models.CharField(max_length=255, blank=True, null=True)
     company_size = models.CharField(max_length=20, choices=CHOICES_SIZE, default=SIZE_1_9, blank=True, null=True)
+
 
     created_by = models.ForeignKey(User, related_name='jobs', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)

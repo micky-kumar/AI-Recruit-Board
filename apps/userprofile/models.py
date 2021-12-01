@@ -10,11 +10,12 @@ class Userprofile(models.Model):
         ('Python','Python'),
         ('AWS', 'AWS'),
         ('Azure', 'Azure'),
+        ('None', 'None')
     )
 
     user = models.OneToOneField(User, related_name='userprofile', on_delete=models.CASCADE)
     is_employer = models.BooleanField(default=False)
-    skill_set = MultiSelectField(choices = skills)
+    skill_set = MultiSelectField(choices = skills, default='none')
 
     def __str__(self):
         return str(self.user)
